@@ -1,6 +1,6 @@
 # Package Stats
 
-## Collect download stats for my published packages
+## Collect download stats for `npm` packages
 
 ## Install
 
