@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import s from '../styles/app.style';
 
 /* Create stateless component
+-- Does not have state to manage. Pass props in and markup is returned.
 -- Show Package Title, github link and npm link package
 -- create one for `lodash` https://www.npmjs.com/package/lodash
 -- props is an object in the first param
