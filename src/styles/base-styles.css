@@ -13,3 +13,7 @@ html, body { height: 100%; }
 html { background-color: #ededed; }
 #root { min-height: 100%; margin: auto 0; }
 body { overflow-x: hidden; }
+
+.downloadCount {
+	font-size: 2em;
+}
