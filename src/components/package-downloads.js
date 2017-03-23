@@ -34,7 +34,6 @@ class PackageDownloads extends React.Component {
 	}
 
 	componentDidMount(){
-		const { period, packageName } = this.props;
 		request('GET', 'https://api.npmjs.org/downloads/point/last-day/lodash')
 		.end((err, res) => {
 			if(res.ok){
