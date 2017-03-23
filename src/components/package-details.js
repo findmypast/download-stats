@@ -8,7 +8,7 @@ example: <PackageDownloads packageName="react" />
 - {children}
 */
 
-function PackageDetails({children, title, github, npmLink}){ // React enforce capital for first charater
+function PackageDetails({title, github, npmLink}){ // React enforce capital for first charater
 	return (
 		<div>
 			<h2>{title}</h2>
