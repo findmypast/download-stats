@@ -1,19 +1,32 @@
 import React from 'react';
+import request from 'superagent';
 
 /* Get the download stats from npm for lodash
+
+- superagent is a simple AJAX API library, which is easy to use
 - npm i superagent --save
-- superagent is a library focused on making ajax calls
 - npm download api: https://github.com/npm/download-counts
 - https://api.npmjs.org/downloads/point/last-day/lodash
 
-import request from 'superagent'
-- the default returned by superagent is a function that has two params
-`superagent('GET', 'URLToQuery');`
-This returns a promise. A pattern used to handle async events to ensure something will happen.
-successful or failed call.
+- Superagent documentation
+`import request from 'superagent'`
+- The default import of superagent is a function that has two params
+`superagent('GET', 'URLToQuery');` - returns an object with `.end(callback)` method on it
+- where we can access any error data and successful response for the server.
+
+request('GET', 'https://api.npmjs.org/downloads/point/last-day/lodash')
+.end(function(err, res){
+	if(res.ok){
+		this.setState({
+			downloadCount: res.body.downloads
+		});
+	}
+});
+
+- bind and arrow
 */
 
-export default class PackageDownloads extends React.Component {
+class PackageDownloads extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -30,8 +43,13 @@ export default class PackageDownloads extends React.Component {
 	render(){
 		return (
 			<div>
-				Downloads: <strong className="downloadCount">{this.state.downloadCount}</strong>
+				Downloads:&nbsp;
+				<strong className="downloadCount">
+				{this.state.downloadCount}
+				</strong>
 			</div>
 		);
 	}
 }
+
+export default PackageDownloads;
