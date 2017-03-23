@@ -1,28 +1,8 @@
 import React from 'react';
 import request from 'superagent';
 
-/* Make PackageDownloads component more reusable
+/* Challenges:
 
-npm downloads documentation: https://github.com/npm/download-counts
-
-- We can use props to customise parts of the request
-- The npm api url has two parts we can customise last-day/packagename
-
-	static defaultProps
-
-		const { period, packageName } = this.props;
-		request('GET', 'https://api.npmjs.org/downloads/point/'+period+'/'+packageName)
-		.end((err, res) => {
-			if(res.ok){
-				this.setState({
-					downloadCount: res.body.downloads
-				});
-			}
-		});
-
-- string interpolation
-- get another package React
-- customise download text with children?
 */
 
 class PackageDownloads extends React.Component {
@@ -33,8 +13,15 @@ class PackageDownloads extends React.Component {
 		}
 	}
 
+	static defaultProps = {
+		period: 'last-day',
+		packageName: 'lodash',
+		children: 'Downloads'
+	}
+
 	componentDidMount(){
-		request('GET', 'https://api.npmjs.org/downloads/point/last-day/lodash')
+		const { period, packageName } = this.props;
+		request('GET', 'https://api.npmjs.org/downloads/point/'+period+'/'+packageName)
 		.end((err, res) => {
 			if(res.ok){
 				this.setState({
@@ -45,12 +32,13 @@ class PackageDownloads extends React.Component {
 	}
 
 	render(){
+		const { children } = this.props;
 		return (
 			<div>
-				Downloads:&nbsp;
 				<strong className="downloadCount">
 				{this.state.downloadCount}
-				</strong>
+				</strong>&nbsp;
+				{children}
 			</div>
 		);
 	}

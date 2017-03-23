@@ -1,14 +1,6 @@
 import React from 'react';
-import PackageDownloads from './package-downloads';
 
-/* Show use of children feature
-- tight coupling between PackageDownloads and PackageDetails.
-- It won't make sense to have another package downloads wrapped inside
-example: <PackageDownloads packageName="react" />
-- {children}
-*/
-
-function PackageDetails({title, github, npmLink}){ // React enforce capital for first charater
+function PackageDetails({children, title, github, npmLink}){ // React enforce capital for first charater
 	return (
 		<div>
 			<h2>{title}</h2>
@@ -16,7 +8,7 @@ function PackageDetails({title, github, npmLink}){ // React enforce capital for 
 				<a href={github}>Github</a> |&nbsp;
 				<a href={npmLink}>NPM</a>
 			</p>
-			<PackageDownloads />
+			{children}
 		</div>
 	);
 }
