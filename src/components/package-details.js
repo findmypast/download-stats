@@ -1,7 +1,14 @@
 import React from 'react';
 import PackageDownloads from './package-downloads';
 
-function PackageDetails({title, github, npmLink}){ // React enforce capital for first charater
+/* Show use of children feature
+- tight coupling between PackageDownloads and PackageDetails.
+- It won't make sense to have another package downloads wrapped inside
+example: <PackageDownloads packageName="react" />
+- {children}
+*/
+
+function PackageDetails({children, title, github, npmLink}){ // React enforce capital for first charater
 	return (
 		<div>
 			<h2>{title}</h2>

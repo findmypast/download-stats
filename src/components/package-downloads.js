@@ -1,29 +1,28 @@
 import React from 'react';
 import request from 'superagent';
 
-/* Get the download stats from npm for lodash
+/* Make PackageDownloads component more reusable
 
-- superagent is a simple AJAX API library, which is easy to use
-- npm i superagent --save
-- npm download api: https://github.com/npm/download-counts
-- https://api.npmjs.org/downloads/point/last-day/lodash
+npm downloads documentation: https://github.com/npm/download-counts
 
-- Superagent documentation
-`import request from 'superagent'`
-- The default import of superagent is a function that has two params
-`superagent('GET', 'URLToQuery');` - returns an object with `.end(callback)` method on it
-- where we can access any error data and successful response for the server.
+- We can use props to customise parts of the request
+- The npm api url has two parts we can customise last-day/packagename
 
-request('GET', 'https://api.npmjs.org/downloads/point/last-day/lodash')
-.end(function(err, res){
-	if(res.ok){
-		this.setState({
-			downloadCount: res.body.downloads
+	static defaultProps
+
+		const { period, packageName } = this.props;
+		request('GET', 'https://api.npmjs.org/downloads/point/'+period+'/'+packageName)
+		.end((err, res) => {
+			if(res.ok){
+				this.setState({
+					downloadCount: res.body.downloads
+				});
+			}
 		});
-	}
-});
 
-- bind and arrow
+- string interpolation
+- get another package React
+- customise download text with children?
 */
 
 class PackageDownloads extends React.Component {
@@ -35,8 +34,14 @@ class PackageDownloads extends React.Component {
 	}
 
 	componentDidMount(){
-		this.setState({
-			downloadCount: 211
+		const { period, packageName } = this.props;
+		request('GET', 'https://api.npmjs.org/downloads/point/last-day/lodash')
+		.end((err, res) => {
+			if(res.ok){
+				this.setState({
+					downloadCount: res.body.downloads
+				});
+			}
 		});
 	}
 
