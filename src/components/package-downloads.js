@@ -1,7 +1,28 @@
 import React from 'react';
 import request from 'superagent';
 
-/* Challenges:
+/* PropTypes
+- Type checking
+More info: https://facebook.github.io/react/docs/typechecking-with-proptypes.html
+- Examples
+optionalNumber: React.PropTypes.number
+optionalString: React.PropTypes.string
+
+- make a prop required
+requiredAny: React.PropTypes.any.isRequired
+
+static propTypes = {
+	packageName: PropTypes.string.isRequired
+}
+
+Challenges:
+
+- Format download number
+
+- Show the `start` and `end` dates for each download
+
+- Make a new component to list the daily download counts for the last month for a package
+here is the end point https://api.npmjs.org/downloads/range/last-month/lodash
 
 */
 
