@@ -21,6 +21,10 @@ Challenges:
 
 - Show the `start` and `end` dates for each download
 
+- Show "loading..." message when fetching the download counts
+
+- Show "oops, something went wrong! Try again." message to handle errors getting downloads count.
+
 - Make a new component to list the daily download counts for the last month for a package
 here is the end point https://api.npmjs.org/downloads/range/last-month/lodash
 
